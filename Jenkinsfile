@@ -20,7 +20,7 @@ pipeline {
 
     stages {
 
-       /* stage('Check for merge conflicts'){
+        stage('Check for merge conflicts'){
             steps {
                 echo ('Clear workspace')
                 dir ('build/export') {
@@ -33,7 +33,7 @@ pipeline {
             }
         }
 
-        stage('Run unit tests'){
+       /* stage('Run unit tests'){
           steps {
             echo 'Execute tests'
 
@@ -66,20 +66,20 @@ pipeline {
 		}
 
        }*/
-       stage('Export from Dev') {
+       /*stage('Export from Dev') {
                    steps {
 		                   echo 'Exporting application from Dev environment : ' + env.PEGA_DEV
 				                   sh "./gradlew --debug performOperation -Dprpc.service.util.action=export -Dpega.rest.server.url=${env.PEGA_DEV}/PRRestService -Dpega.rest.username=puneeth_export -Dpega.rest.password=rules -Duser.temp.dir=${WORKSPACE}/tmp"
 							  }
-							               }
+							               }*/
 
 
-       /*stage('Merge branch'){
-        when {
+       stage('Merge branch'){
+        /*when {
           environment name: "PERFORM_MERGE", value: "true"
         }*/
 
-       /* steps{
+        steps{
 
             echo 'Perform Merge' 
 
@@ -94,7 +94,14 @@ pipeline {
                 }
             }
           }
-        }*/
+        }
+	stage('Export from Dev') {
+	                   steps {
+			                                      echo 'Exporting application from Dev environment : ' + env.PEGA_DEV
+							                                                         sh "./gradlew --debug performOperation -Dprpc.service.util.action=export -Dpega.rest.server.url=${env.PEGA_DEV}/PRRestService -Dpega.rest.username=puneeth_export -Dpega.rest.password=rules -Duser.temp.dir=${WORKSPACE}/tmp"
+														                                                           }
+																					                                                                          }
+
 
 
         /*stage('Publish to Artifactory') {
