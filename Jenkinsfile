@@ -20,7 +20,7 @@ pipeline {
 
     stages {
 
-        stage('Check for merge conflicts'){
+       /* stage('Check for merge conflicts'){
             steps {
                 echo ('Clear workspace')
                 dir ('build/export') {
@@ -51,12 +51,12 @@ pipeline {
           }
        }
        stage('Approve for Merge?'){
-		steps {
+		steps {*/
 	
 		/*input message: 'Proceed with Merge'
 		echo 'Merging the rules..'*/
 
-		 mail (
+		 /*mail (
 		           subject: "Approval for ${env.BUILD_NUMBER}",
 			             body: "Your build ${env.BUILD_NUMBER}, ${env.RUN_DISPLAY_URL}/input/",
 				               to: "puneeth.in@gmail.com"
@@ -65,7 +65,7 @@ pipeline {
 
 		}
 
-       }
+       }*/
        stage('Export from Dev') {
                    steps {
 		                   echo 'Exporting application from Dev environment : ' + env.PEGA_DEV
@@ -74,12 +74,12 @@ pipeline {
 							               }
 
 
-       stage('Merge branch'){
-       /* when {
+       /*stage('Merge branch'){
+        when {
           environment name: "PERFORM_MERGE", value: "true"
         }*/
 
-        steps{
+       /* steps{
 
             echo 'Perform Merge' 
 
@@ -94,7 +94,7 @@ pipeline {
                 }
             }
           }
-        }
+        }*/
 
 
         /*stage('Publish to Artifactory') {
@@ -113,13 +113,13 @@ pipeline {
             }
         }*/
 
-        stage('Fetch from Artifactory') {
+        /*stage('Fetch from Artifactory') {
 
             steps {
               echo 'Fetching application archive from Artifactory'
               sh  "./gradlew fetchFromArtifactory -PartifactoryUser=pega_admin -PartifactoryPassword=P@ssw0rd_pega --debug"
             }
-        }
+        }*/
 
         /*stage('Create restore point') {
 
@@ -128,14 +128,14 @@ pipeline {
                 sh "./gradlew createRestorePoint -PtargetURL=${PEGA_PROD} -PpegaUsername=${IMS_USER} -PpegaPassword=${IMS_PASSWORD}"
             }
         }*/
-        stage('Deploy to SIT') {
+        /*stage('Deploy to SIT') {
 
             steps {
               echo 'Deploying to production : ' + env.PEGA_PROD
 
               sh "./gradlew performOperation -Dprpc.service.util.action=import -Dpega.rest.server.url=${env.PEGA_PROD}/PRRestService -Dpega.rest.username=puneeth_export  -Dpega.rest.password=rules -Duser.temp.dir=${WORKSPACE}/tmp --debug"
             }
-        }
+        }*/
   }
 
   post {
