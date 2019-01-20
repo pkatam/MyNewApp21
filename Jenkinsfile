@@ -32,10 +32,10 @@ pipeline {
 // at the end of the file or in a shared library
 void executeModuleScripts(String operation) {
 
-            String item='applicationName'
+            #String item='applicationName'
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
-	    InputJSON.each{ println it.applicationVersion }
+	    #InputJSON.each{ println it.applicationVersion }
             
 	    InputJSON.each{  k, v ->println k }
 	    //def jsonSlurper = new JsonSlurperClassic()
