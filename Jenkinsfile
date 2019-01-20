@@ -36,6 +36,8 @@ void executeModuleScripts(String operation) {
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
 	    InputJSON.each{ println it.applicationVersion }
+            
+	    InputJSON.each{  k, v ->println k }
 	    //def jsonSlurper = new JsonSlurperClassic()
 	      //  def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
 		//    data = jsonSlurper.parse(reader)  
