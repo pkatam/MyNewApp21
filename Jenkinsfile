@@ -36,7 +36,7 @@ void executeModuleScripts(String operation) {
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
             def Stgs
-	    InputJSON.TESTS.each { stgs=it."$item" }
+	    InputJSON.TESTS.each { stgs=it."$item";println "${stgs}" }
             println "${stgs}"
 	    //InputJSON.each{  k, v ->println v }
 	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
