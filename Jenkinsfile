@@ -33,10 +33,13 @@ pipeline {
 void executeModuleScripts(String operation) {
 
             String item='applicationName'
-	    def jsonSlurper = new JsonSlurperClassic()
-	        def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
-		    data = jsonSlurper.parse(reader)  
-		        data.each { println  it["$item"] }
+	    def inputFile = new File("/home/pegacoeadm/Sample.json")
+	    def InputJSON = new JsonSlurper().parseFile(inputFile, 'UTF-8')
+	    InputJSON.each{ println it }
+	    //def jsonSlurper = new JsonSlurperClassic()
+	      //  def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
+		//    data = jsonSlurper.parse(reader)  
+		  //      data.each { println  it["$item"] }
 	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
             allModules.each { module ->  String action = "${operation}:${module}"  
            echo("---- ${action.toUpperCase()} ----") 
