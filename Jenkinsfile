@@ -33,8 +33,7 @@ pipeline {
 void executeModuleScripts(String operation) {
 
             String item='applicationName'
-	    def jsonSlurper = new JsonSlurper()
-	    jsonSlurper = null
+	    def jsonSlurper = new JsonSlurperClassic()
 	        def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
 		    data = jsonSlurper.parse(reader)  
 		        data.each { println  it."$item" }
