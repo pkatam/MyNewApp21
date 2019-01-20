@@ -33,7 +33,7 @@ pipeline {
 void executeModuleScripts(String operation) {
 
             String item='applicationName'
-	    Srring devb='devB'
+	    String devb='devB'
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
             def stgs,devbstgs
