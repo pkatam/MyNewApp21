@@ -35,12 +35,9 @@ void executeModuleScripts(String operation) {
             String item='applicationName'
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
-            InputJSON.TESTS.each { println  it."$item" } 
-	    InputJSON.each{  k, v ->println v }
-	    //def jsonSlurper = new JsonSlurperClassic()
-	      //  def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
-		//    data = jsonSlurper.parse(reader)  
-		  //      data.each { println  it["$item"] }
+            def Stgs
+	    InputJSON.TESTS.each { println  it."$item" stgs=it."$item" println stgs } 
+	    //InputJSON.each{  k, v ->println v }
 	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
             allModules.each { module ->  String action = "${operation}:${module}"  
            echo("---- ${action.toUpperCase()} ----") 
