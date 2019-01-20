@@ -20,31 +20,32 @@ pipeline {
     stages {
 // in a declarative pipeline
         stage('Trigger Building') {
-						                  steps {
-								                  executeModuleScripts('build') // local method, see at the end of this script
-										                }
-												            }
+		                    steps {
+						executeModuleScripts('build') // local method, see at the end of this script
+				          }
+				  }
 
+           }	
 }
-}
-													        // at the end of the file or in a shared library
-														        void executeModuleScripts(String operation) {
+// at the end of the file or in a shared library
+void executeModuleScripts(String operation) {
 
-															          def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
+            def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
+            allModules.each { module ->  String action = "${operation}:${module}"  
+           echo("---- ${action.toUpperCase()} ----") 
+	   String command = "npm run ${action} -ddd"                   
+           // here is the trick           
+           script {
 
-																            allModules.each { module ->  
-																	              String action = "${operation}:${module}"  
-
-																		                echo("---- ${action.toUpperCase()} ----")        
-																				          String command = "npm run ${action} -ddd"                   
-
-																					              // here is the trick           
-																						                  script {
 																								                stage(module) {
-																										                																							              }
-																													                  }
-																															            }
+			when {
+					                expression { module == 'module1' }
+							echo "Hello"
 
-																		
-																		}
-																		
+							            }
+				
+				}
+                  }
+	        }
+				
+}																		
