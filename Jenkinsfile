@@ -34,8 +34,8 @@ void executeModuleScripts(String operation) {
 
             String item='applicationName'
 	    def jsonSlurper = new JsonSlurper()
-	        def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
-		    data = jsonSlurper.parse(reader)  
+	        //def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
+		  //  data = jsonSlurper.parse(reader)  
 		        //data..each { println  it."$item" }
 
 	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
