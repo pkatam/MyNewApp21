@@ -33,11 +33,12 @@ pipeline {
 void executeModuleScripts(String operation) {
 
             String item='applicationName'
+	    String deva='devA'
 	    String devb='devB'
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
-            def stgs,devbstgs
-	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";println "${devbstgs}" }
+            def stgs,devbstgs,devastgs
+	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";devastgs=it."$deva";println "${devastgs}" }
             println "${stgs}"
 	    //InputJSON.each{  k, v ->println v }
 	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
