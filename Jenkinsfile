@@ -41,8 +41,7 @@ pipeline {
 																					              // here is the trick           
 																						                  script {
 																								                stage(module) {
-																										                bat(command)
-																												              }
+																										                																							              }
 																													                  }
 																															            }
 
