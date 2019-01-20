@@ -38,12 +38,11 @@ void executeModuleScripts(String operation) {
            script {
 
 																								                stage(module) {
-			when {
-					                expression { module == 'module1' }
-							echo "Hello"
-
-							            }
-				
+			if (module == 'module1') {
+			                                                    echo 'I only execute on the master branch'
+									                                                } else {
+															                                                    echo 'I execute elsewhere'
+																					                                                }
 				}
                   }
 	        }
