@@ -1,6 +1,8 @@
 /* 
-* Copyright (c) 2017 and Confidential to Pegasystems Inc. All rights reserved11.  
+* Copyright (c) 2019 and Confidential to Carefirst All rights reserved.  
 */ 
+
+import groovy.json.*
 
 pipeline {
     agent any
@@ -30,7 +32,13 @@ pipeline {
 // at the end of the file or in a shared library
 void executeModuleScripts(String operation) {
 
-            def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
+            String item='applicationName'
+	    def jsonSlurper = new JsonSlurper()
+	        def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/home/pegacoeadm/Sample.json"),"UTF-8"))
+		    data = jsonSlurper.parse(reader)  
+		        data.TESTS.each { println  it."$item" }
+
+	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
             allModules.each { module ->  String action = "${operation}:${module}"  
            echo("---- ${action.toUpperCase()} ----") 
 	   String command = "npm run ${action} -ddd"                   
@@ -39,10 +47,10 @@ void executeModuleScripts(String operation) {
 
 																								                stage(module) {
 			if (module == 'module1') {
-			                                                    echo 'I only execute on the master branch'
-									                                                } else {
-															                                                    echo 'I execute elsewhere'
-																					                                                }
+			                           echo 'I only execute on the master branch'
+			                         } else {
+			                                  echo 'I execute elsewhere'
+			                                }
 				}
                   }
 	        }
