@@ -17,16 +17,15 @@ pipeline {
             usernameVariable: 'puneeth_export')*/
         ])
     }
+    stages {
 // in a declarative pipeline
         stage('Trigger Building') {
-	              when {
-		                      environment(name: 'DO_BUILD_PACKAGES', value: 'true')
-				                    }
 						                  steps {
 								                  executeModuleScripts('build') // local method, see at the end of this script
 										                }
 												            }
 
+}
 }
 													        // at the end of the file or in a shared library
 														        void executeModuleScripts(String operation) {
