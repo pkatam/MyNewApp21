@@ -3,9 +3,6 @@
 */ 
 
 import groovy.json.*
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
 
 pipeline {
     agent any
@@ -105,11 +102,6 @@ void executeModuleScripts(String operation) {
 						   withEnv(['TESTRESULTSFILE="TestResult.xml"']) {
 						   sh "./gradlew executePegaUnitTests -PtargetURL=${PEGA_DEV} -PpegaUsername=puneeth_export -PpegaPassword=rules -PtestResultLocation=${WORKSPACE} -PtestResultFile=${TESTRESULTSFILE}"
 						   script {
-						   build.getActions(hudson.tasks.junit.TestResultAction).each {action ->
-						       action.getTotalCount()
-						           action.getFailCount()
-							       action.getSkipCount()
-							       }
 						    if (currentBuild.result != null) {
 						     input(message: 'Ready to share tests have failed, would you like to abort the pipeline?')
 						     }
