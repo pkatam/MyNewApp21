@@ -33,11 +33,61 @@ void executeModuleScripts(String operation) {
  item='applicationName'
 	    String deva='devA'
 	    String devb='devB'
+	    String sita='sitA'
+	    String sitb='sitB'
+	    String uat='uat'
+	    String tt='tt'
+            String prod='prod'
 	    def EnvList = []
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
-            def stgs,devbstgs,devastgs
-	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";devastgs=it."$deva";println "${devastgs}";if ("${devastgs}") { println "not empty";EnvList.add("${devastgs}") } }
+            def stgs,devbstgs,devastgs,sitastgs,sitbstgs,uatstgs,ttstgs,prodstgs
+	    InputJSON.TESTS.each { 
+	    stgs=it."$item";
+	    devbstgs=it."$devb";
+	    devastgs=it."$deva";
+	    sitastgs=it."$sita";
+	    sitbstgs=it."$sitb";
+	    uatstgs=it."$uat";
+            ttstgs=it."$tt";
+	    prodstgs=it."$prod";
+	    println "${devastgs}";
+	    if ("${devastgs}") { 
+	    
+	    	EnvList.add("${devastgs}") 
+	    	}
+
+	   if ("${devbstgs}") {
+	                   EnvList.add("${devbstgs}")
+
+			      }
+	   if ("${sitastgs}") {
+	                  EnvList.add("${sitastgs}")
+
+			      }
+
+	   if ("${sitbstgs}") {
+	                  EnvList.add("${sitbstgs}")
+
+			             }
+
+	   if ("${uatstgs}") {
+	                 EnvList.add("${uatstgs}")
+
+			            }
+	   if ("${ttstgs}") {
+	                EnvList.add("${ttstgs}")
+
+			           }
+
+	   if ("${prodstgs}") {
+	                EnvList.add("${prodstgs}")
+
+			           }
+
+
+
+		}
 	    //InputJSON.each{  k, v ->println v }
 	    //def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
             def allModules = EnvList.collect()
