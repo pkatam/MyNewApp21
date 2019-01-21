@@ -52,7 +52,7 @@ void executeModuleScripts(String operation) {
             ttstgs=it."$tt";
 	    prodstgs=it."$prod";
 	    println "${devastgs}";
-	    if ("${devastgs}") { 
+	    if (devastgs) { 
 	    
 	    	EnvList.add("${devastgs}") 
 	    	}
