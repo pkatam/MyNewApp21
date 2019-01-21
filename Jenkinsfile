@@ -57,11 +57,11 @@ void executeModuleScripts(String operation) {
 	    	EnvList.add("${devastgs}") 
 	    	}
 
-	   if ("${devbstgs}") {
+	   if (devbstgs) {
 	                   EnvList.add("${devbstgs}")
 
 			      }
-	   if ("${sitastgs}") {
+	   if (sitastgs) {
 	                  EnvList.add("${sitastgs}")
 
 			      }
@@ -71,16 +71,16 @@ void executeModuleScripts(String operation) {
 
 			             }
 
-	   if ("${uatstgs}") {
+	   if (uatstgs) {
 	                 EnvList.add("${uatstgs}")
 
 			            }
-	   if ("${ttstgs}") {
+	   if (ttstgs) {
 	                EnvList.add("${ttstgs}")
 
 			           }
 
-	   if ("${prodstgs}") {
+	   if (prodstgs) {
 	                EnvList.add("${prodstgs}")
 
 			           }
