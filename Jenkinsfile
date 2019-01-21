@@ -37,7 +37,7 @@ void executeModuleScripts(String operation) {
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
             def stgs,devbstgs,devastgs
-	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";devastgs=it."$deva";println "${devastgs}";if ("${devastgs}") { EnvList.add("${devastgs}") } }
+	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";devastgs=it."$deva";println "${devastgs}";if ("${devastgs}") { println "not empty";EnvList.add("${devastgs}") } }
 	    //InputJSON.each{  k, v ->println v }
 	    //def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
             def allModules = EnvList.collect()
