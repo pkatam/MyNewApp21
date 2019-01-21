@@ -104,13 +104,8 @@ void executeModuleScripts(String operation) {
 			                           echo 'I only execute on the dev'
 						   withEnv(['TESTRESULTSFILE="TestResult.xml"']) {
 						   sh "./gradlew executePegaUnitTests -PtargetURL=${PEGA_DEV} -PpegaUsername=puneeth_export -PpegaPassword=rules -PtestResultLocation=${WORKSPACE} -PtestResultFile=${TESTRESULTSFILE}"
+						   junit(allowEmptyResults: true, testResults: "${env.WORKSPACE}/${env.TESTRESULTSFILE}")
 						   script {
-						   build.getActions(hudson.tasks.junit.TestResultAction).each {action1 ->
-						       action1.getTotalCount()
-						           action1.getFailCount()
-							       action1.getSkipCount()
-							       println action1.getTotalCount()
-							       }
 
 						    if (currentBuild.result != null) {
 						     input(message: 'Ready to share tests have failed, would you like to abort the pipeline?')
