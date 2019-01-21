@@ -35,14 +35,15 @@ void executeModuleScripts(String operation) {
             String item='applicationName'
 	    String deva='devA'
 	    String devb='devB'
+	    def EnvList = []
 	    def inputFile = new File("/home/pegacoeadm/Sample.json")
 	    def InputJSON = new JsonSlurperClassic().parseFile(inputFile, 'UTF-8')
             def stgs,devbstgs,devastgs
-	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";devastgs=it."$deva";println "${devastgs}" }
-            println "${stgs}"
+	    InputJSON.TESTS.each { stgs=it."$item";devbstgs=it."$devb";devastgs=it."$deva";println "${devastgs}";EnvList.add("${devastgs}") }
 	    //InputJSON.each{  k, v ->println v }
-	    def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
-            allModules.each { module ->  String action = "${operation}:${module}"  
+	    //def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
+            def allModules = EnvList.collect();
+	    allModules.each { module ->  String action = "${operation}:${module}"  
            echo("---- ${action.toUpperCase()} ----") 
 	   String command = "npm run ${action} -ddd"                   
            // here is the trick           
