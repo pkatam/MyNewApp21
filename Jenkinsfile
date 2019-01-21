@@ -66,7 +66,7 @@ void executeModuleScripts(String operation) {
 
 			      }
 
-	   if ("${sitbstgs}") {
+	   if (sitbstgs) {
 	                  EnvList.add("${sitbstgs}")
 
 			             }
