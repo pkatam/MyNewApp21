@@ -97,7 +97,7 @@ void executeModuleScripts(String operation) {
            script {
 
 																								                stage(module) {
-			if (module == 'devastgs') {
+			if (module == 'devA') {
 			                           echo 'I only execute on the dev'
 						   withEnv(['TESTRESULTSFILE="TestResult.xml"']) {
 						   sh "./gradlew executePegaUnitTests -PtargetURL=${PEGA_DEV} -PpegaUsername=puneeth_export -PpegaPassword=rules -PtestResultLocation=${WORKSPACE} -PtestResultFile=${TESTRESULTSFILE}"
