@@ -89,7 +89,6 @@ void executeModuleScripts(String operation) {
 
 		}
 	    //InputJSON.each{  k, v ->println v }
-	    //def allModules = ['module1', 'module2', 'module3', 'module4', 'module11']
             def allModules = EnvList.collect()
 	    allModules.each { module ->  String action = "${operation}:${module}"  
            echo("---- ${action.toUpperCase()} ----") 
@@ -98,9 +97,18 @@ void executeModuleScripts(String operation) {
            script {
 
 																								                stage(module) {
-			if (module == 'module1') {
-			                           echo 'I only execute on the master branch'
-			                         } else {
+			if (module == 'devastgs') {
+			                           echo 'I only execute on the dev'
+						   withEnv(['TESTRESULTSFILE="TestResult.xml"']) {
+						   sh "./gradlew executePegaUnitTests -PtargetURL=${PEGA_DEV} -PpegaUsername=puneeth_export -PpegaPassword=rules -PtestResultLocation=${WORKSPACE} -PtestResultFile=${TESTRESULTSFILE}"
+						   script {
+						    if (currentBuild.result != null) {
+						     input(message: 'Ready to share tests have failed, would you like to abort the pipeline?')
+						     }
+						     }
+						     }
+						     }
+			                          else {
 			                                  echo 'I execute elsewhere'
 			                                }
 				}
