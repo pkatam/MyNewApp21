@@ -33,7 +33,7 @@ import groovy.util.XmlSlurper
 import groovy.xml.XmlUtil
 import groovy.io.FileType
 import java.io.File
-
+import static groovyx.net.http.ContentType.XML
 // Import the ANT targets defined in prpcServiceUtils for application import and export
 ant.importBuild 'prpcServiceUtils/scripts/utils/prpcServiceUtilsWrapper.xml'
 
@@ -348,7 +348,7 @@ task executePegaUnitTests(type: org._10ne.gradle.rest.RestTask) {
 	password = "rules"
 
 	httpMethod = 'post'
-	contentType = groovyx.net.http.ContentType.XML
+	contentType = XML
 
 	responseHandler = { response ->
 		println "Successful test execution. Results are stored at : ${testResultFile.toString()} \n"
