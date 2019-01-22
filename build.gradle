@@ -348,14 +348,14 @@ task executePegaUnitTests(type: org._10ne.gradle.rest.RestTask) {
 	password = "rules"
 
 	httpMethod = 'post'
-	contentType = XML
+	contentType = 'text/xml'
 
 	responseHandler = { response ->
 		println "Successful test execution. Results are stored at : ${testResultFile.toString()} \n"
 		if (response != null) {
 			println "Test Results : ${response.toString()}"
 		}
-		//testResultFileHandle.write "${response.toString()}"
+		testResultFileHandle.write "${response.toString()}"
 
 		
 		}
