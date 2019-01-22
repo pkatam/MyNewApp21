@@ -106,7 +106,7 @@ void executeModuleScripts(String operation) {
 						   sh "./gradlew executePegaUnitTests -PtargetURL=${PEGA_DEV} -PpegaUsername=puneeth_export -PpegaPassword=rules -PtestResultLocation=${WORKSPACE} -PtestResultFile=${TESTRESULTSFILE}"
 						   //junit '**/reports/junit/*.xml'
 						   //junit(allowEmptyResults: true, testResults: "${env.WORKSPACE}/${env.TESTRESULTSFILE}")
-						   junit(allowEmptyResults: true, testResults: "/var/lib/jenkins/workspace/PDMPipelineOld10_master-5TBLQVUTL4X4U733FUJ5V7I5ZIKD2I3GWOK7AO4NAXUZVC6FFPBQ/TestResult.xml)
+						   junit(allowEmptyResults: true, testResults: "/var/lib/jenkins/workspace/PDMPipelineOld10_master-5TBLQVUTL4X4U733FUJ5V7I5ZIKD2I3GWOK7AO4NAXUZVC6FFPBQ/TestResult.xml")
 
 						   script {
 
