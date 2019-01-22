@@ -321,7 +321,7 @@ task executePegaUnitTests(type: org._10ne.gradle.rest.RestTask) {
 	def accessGroup = findProperty('accessGroup') ?:project.defaultAccessGroup
 	def testSuite = findProperty('testSuite') ? '':project.smokeTestSuite
 	def testResultLocation = findProperty('testResultLocation') ?:System.getProperty("user.dir")
-	testResultLocation = "/var/lib/jenkins/workspace/PDMPipelineOld10_master-5TBLQVUTL4X4U733FUJ5V7I5ZIKD2I3GWOK7AO4NAXUZVC6FFPBQ"
+	testResultLocation = "/var/lib/jenkins/workspace/MyNewApp21_master-X36YFSDJMWNZKMRNZMGTOD5UFIS6HMQ6U3AXAYWF7WF77FG7WH2A"
 	def testResultFile = findProperty('testResultFile') ?:project.testResultFile
 	File testResultFileHandle
 	if (testResultLocation != null) {
